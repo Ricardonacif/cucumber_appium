@@ -1,8 +1,10 @@
 require 'watir-webdriver'
 require 'pry'
 require 'page-object'
+require 'touch_action'
 require 'cucumber'
 require 'pages/facebook_home'
+require 'pages/facebook_feed'
 
 Before do
   caps = {

@@ -8,6 +8,8 @@ Dado(/^que eu estou logado$/) do
 end
 
 Quando(/^eu percorrer meu feed de notícias$/) do
+  @facebook_feed = FacebookFeed.new(@browser)
+  @facebook_feed.recommendation_div_element.touch_action(:swipe, distance: -100)
   require 'pry'; binding.pry
 end
 
