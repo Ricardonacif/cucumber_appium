@@ -1,17 +1,11 @@
 require 'watir-webdriver'
 require 'pry'
-require 'world_helper'
 require 'page-object'
-require 'browse_page'
+require 'cucumber'
 
-@browser = browser
-@wait = Selenium::WebDriver::Wait.new(:timeout => 10)
-
-World(WorldHelper)
 
 Before do
-  @browser = Selenium::WebDriver.for :chrome
-  @browser.manage.delete_all_cookies
+  @browser = Watir::Browser.new :chrome
 end
 
 After do |scenario|
