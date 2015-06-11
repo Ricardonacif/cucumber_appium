@@ -9,14 +9,16 @@ end
 
 Quando(/^eu percorrer meu feed de notícias$/) do
   @facebook_feed = FacebookFeed.new(@browser)
-  @facebook_feed.recommendation_div_element.touch_action(:swipe, distance: -100)
-  require 'pry'; binding.pry
 end
 
 Então(/^eu devo ver um painel com as indicações de amizade$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(@facebook_feed.recommendation_div_element.when_present).to be_visible
 end
 
 Então(/^eu devo poder deslizar para ver mais indicações$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  @facebook_feed.friend_recommendations_elements.each do |element|
+    expect(element.when_present).to be_visible
+    @facebook_feed.recommendation_div_element.touch_action(:swipe, distance: -100)
+    sleep 1
+  end
 end
